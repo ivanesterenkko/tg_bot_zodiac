@@ -3,10 +3,8 @@ from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters
 
 TOKEN = '7386356120:AAHGWZ9EqZsFh9XL_-q6daCK5r1a6mUzPuY'
-
 HOROSCOPE_URL = 'https://orakul.com/horoscope/astrologic/general'
 
-# Настройка логирования
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
 
@@ -50,10 +48,8 @@ async def handle_date_of_birth(update: Update, context) -> None:
 
 def main() -> None:
     application = ApplicationBuilder().token(TOKEN).build()
-
     application.add_handler(CommandHandler("start", start))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_date_of_birth))
-
     application.run_polling()
 
 if __name__ == '__main__':
